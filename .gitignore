@@ -1,0 +1,19 @@
+# Python venv
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# User data (vaults and notes live here)
+vaults/
+
+# Test/coverage artifacts
+.pytest_cache/
+.coverage
+.ruff_cache/
