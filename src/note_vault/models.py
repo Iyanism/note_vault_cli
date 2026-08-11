@@ -7,6 +7,20 @@ from pathlib import Path
 from typing import Any
 
 
+class InvalidNameError(ValueError):
+    """Raised when a vault or note name is invalid."""
+
+
+def sanitize_name(name: str) -> str:
+    """Validate and normalize a vault/note name (blocks path traversal)."""
+    cleaned = name.strip().strip("/\\").strip()
+    if cleaned in {"", ".", ".."}:
+        raise InvalidNameError("Name cannot be empty, '.', or '..'")
+    if "/" in cleaned or "\\" in cleaned:
+        raise InvalidNameError("Name cannot contain path separators")
+    return cleaned
+
+
 @dataclass
 class Note:
     """A single note stored as a text file."""
