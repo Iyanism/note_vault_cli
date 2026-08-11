@@ -58,6 +58,10 @@ def prompt_select(message: str, choices: list[dict[str, Any]]) -> Any:
     return inquirer.select(message=message, choices=choices).execute()
 
 
+def pause() -> None:
+    inquirer.confirm(message="Press Enter to continue...", default=True).execute()
+
+
 # --- renderers ---
 
 
