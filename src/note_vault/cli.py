@@ -222,4 +222,11 @@ class NoteVaultApp:
 
 
 def main() -> None:
-    NoteVaultApp().run()
+    import sys
+
+    from note_vault.cli_commands import app as typer_app
+
+    if len(sys.argv) == 1:
+        NoteVaultApp().run()
+    else:
+        typer_app()
